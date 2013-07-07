@@ -209,10 +209,9 @@ require(['bootstrap'], function() {
                 var letters = alphabet.get(text);
                 this.off();
                 for( var l = 0; l < letters.length; l++) {
-                    var letter = letters[l];
                     for( var i = 0; i < alphabet.height; i++) {
                         for( var j = 0; j < alphabet.width; j++) {
-                            this.leds[i][(this.col + j + l * alphabet.width) % this.options.cols].light(letter.charAt(alphabet.width*i+j) == '1');
+                            this.leds[i][(this.col + j + l * alphabet.width) % this.options.cols].light(letters[l].charAt(alphabet.width*i+j) == '1');
                         }
                     }
                 }
