@@ -1,0 +1,105 @@
+body     {
+    margin-top: 50px;
+}
+
+@media(max-width:767px){
+   .affix {
+     position: static;
+     width: auto;
+     top: 0;
+    }
+}
+
+.affix {
+    top: 50px;
+}
+
+.wall {
+    margin-top: 40px;
+}
+
+.wall h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.dropbox1 {
+    width: 100%;
+    height: 100px;
+    border: 4px solid #DDD;
+    -moz-border-radius: 8px;º
+    -webkit-border-radius: 8px;
+    background-color: #FEFFEC;
+    text-align: center;
+    color: #BBB;
+    font-size: 2em;
+    font-family: Arial, sans-serif;
+    margin-bottom: 10px;
+}
+
+.dropbox span {
+    position: relative;
+    top: 40%;
+}
+
+.dropbox input1 {
+    width: 80%;
+}
+
+.fallback {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.fallback input {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    font-size: 10000px;
+    border: 10000px solid transparent;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    position: absolute;
+    right: -1000px;
+    top: -1000px;
+    cursor: pointer;
+}
+
+.drop {
+    background-color: #dff0d8;
+    border-color: green;
+}
+
+.paparazzi-image {
+    max-width: 100%;
+    width: 480px;
+    margin: 0 auto 20px auto;
+    padding-bottom: 20px;
+    border-bottom: solid 2px #999;
+}
+
+.paparazzi-image blockquote {
+    text-align: left;
+}
+
+.paparazzi-image .img {
+    display: block;
+    margin: 10px auto 0 auto;
+    width: 100%;
+}
+
+.led {
+    text-align: center;
+}
+
+.led div {
+    margin: 0 auto 0 auto;
+    background-color: #ccc;
+    border-radius: 50%;
+    width: 50%;
+}
+
+.led.on div {
+    background-color: red;
+}
