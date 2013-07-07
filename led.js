@@ -28,9 +28,17 @@ require(['bootstrap'], function() {
 
         var alphabet = {
             width: 6,
-            height: 8
+            height: 8,
+
+            get: function(text) {
+                var letters = [];
+                for( var i = 0; i < text.length; i++)
+                    letters.push(this[text.charAt(i)] || this['']);
+                return letters;
+            }
         };
 
+        alphabet['']  = '111111111111111111111111111111111111111111111111';
         alphabet[' '] = '000000000000000000000000000000000000000000000000';
         alphabet['!'] = '000100001110001110000100000100000000000100000000';
         alphabet['"'] = '011011011011010010000000000000000000000000000000';
@@ -156,7 +164,7 @@ require(['bootstrap'], function() {
 
         var ViewMatrix = Backbone.View.extend({
 
-            el: $('.well'),
+            el: $('.matrix'),
 
             col: 0,
 
@@ -198,9 +206,7 @@ require(['bootstrap'], function() {
             },
 
             print: function(text) {
-                letters = [];
-                for( var i = 0; i < text.length; i++)
-                    letters.push(alphabet[text.charAt(i)]);
+                var letters = alphabet.get(text);
                 this.off();
                 for( var l = 0; l < letters.length; l++) {
                     var letter = letters[l];

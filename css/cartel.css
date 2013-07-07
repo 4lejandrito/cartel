@@ -14,7 +14,7 @@
     width: 60%;
 }
 
-.well {
+.matrix {
     overflow: auto;
     background: black;
     color: rgb(255,204,0);;
