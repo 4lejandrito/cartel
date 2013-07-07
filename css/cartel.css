@@ -17,6 +17,8 @@
 .well {
     overflow: auto;
     background: black;
+    color: rgb(255,204,0);;
+    font-size: 20px;
 }
 
 .led {
