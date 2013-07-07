@@ -1,0 +1,46 @@
+.navbar {
+    margin-bottom: 20px;
+}
+
+.cartel {
+    text-align: center;
+}
+
+#letters {
+    font-size: 25px;
+    height: 25px;
+    padding: 5px;
+    text-align: center;
+    width: 60%;
+}
+
+.well {
+    overflow: auto;
+    background: black;
+}
+
+.led {
+    text-align: center;
+    float: left;
+}
+
+.led div {
+    /*-webkit-transition: background 0.01s linear;
+    -moz-transition: background 0.01s linear;
+    -ms-transition: background 0.01s linear;
+    -o-transition: background 0.01s linear;
+    transition: background 0.01s linear;
+    -webkit-transition: all 0.3s cubic-bezier(0.485, 0.030, 0.315, 1.630);
+    -moz-transition: all 0.3s cubic-bezier(0.485, 0.030, 0.315, 1.630);
+    -o-transition: all 0.3s cubic-bezier(0.485, 0.030, 0.315, 1.630);
+    -ms-transition: all 0.3s cubic-bezier(0.485, 0.030, 0.315, 1.630);
+    transition: all 0.3s cubic-bezier(0.485, 0.030, 0.315, 1.630);*/
+    margin: 2px auto 2px auto;
+    background-color: rgb(50,50,50);
+    border-radius: 40%;
+    width: 80%;
+}
+
+.led.on div {
+    background-color: rgb(255,204,0);;
+}
