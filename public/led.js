@@ -141,11 +141,12 @@ require(['bootstrap'], function() {
 
         var ViewLed = Backbone.View.extend({
 
+            tagName: 'span',
             className: 'led',
 
             render: function() {
                 var self = this;
-                this.$el.html(_.template($('.tpl-led').html(), {status: true}));
+                this.$el.html('<span>&nbsp;</span>');
                 return this;
             },
 
@@ -164,8 +165,6 @@ require(['bootstrap'], function() {
 
         var ViewMatrix = Backbone.View.extend({
 
-            el: $('.matrix'),
-
             col: 0,
 
             leds: [],
@@ -175,6 +174,7 @@ require(['bootstrap'], function() {
             },
 
             initialize: function() {
+                this.leds = [];
                 for( var i = 0; i < this.options.rows; i++) {
                     this.leds.push([]);
                     for( var j = 0; j < this.options.cols; j++) {
@@ -186,15 +186,15 @@ require(['bootstrap'], function() {
             render: function() {
                 this.$el.empty();
                 for( var i = 0; i < this.leds.length; i++) {
-                    var row = $('<div>');
+                    var row = $('<div>').addClass('led-row');
                     for( var j = 0; j < this.leds[i].length; j++) {
                         row.append(this.leds[i][j].render().$el.css({
-                            'width': (100 / this.options.cols) + '%',
-                            'margin-left': 0
+                            'width': (100 / this.options.cols) + '%'
                         }));
                     }
                     this.$el.append(row);
                 }
+                return this;
             },
 
             off: function() {
@@ -229,7 +229,11 @@ require(['bootstrap'], function() {
             },
 
             initialize: function() {
-                this.matrix = new ViewMatrix({rows: alphabet.height, cols: 50});
+                this.matrix = new ViewMatrix({
+                    el: this.$('.matrix'),
+                    rows: alphabet.height,
+                    cols: 50
+                });
                 this.matrix.render();
             },
 
