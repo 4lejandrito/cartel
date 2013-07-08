@@ -42,7 +42,7 @@ require(['bootstrap'], function() {
             [ 0x00,0x00,0x6f,0x00,0x00 ],   // ! 0x21 33
             [ 0x00,0x07,0x00,0x07,0x00 ],   // " 0x22 34
             [ 0x14,0x7f,0x14,0x7f,0x14 ],   // # 0x23 35
-            [ 0x00,0x07,0x04,0x1e,0x00 ],   // $ 0x24 36
+            [ 0x2e,0x2a,0xff,0x2a,0x3a ],   // $ 0x24 36
             [ 0x23,0x13,0x08,0x64,0x62 ],   // % 0x25 37
             [ 0x36,0x49,0x56,0x20,0x50 ],   // & 0x26 38
             [ 0x00,0x00,0x07,0x00,0x00 ],   // ' 0x27 39
@@ -129,7 +129,7 @@ require(['bootstrap'], function() {
             [ 0x44,0x28,0x10,0x28,0x44 ],   // x 0x78 120
             [ 0x0c,0x50,0x50,0x50,0x3c ],   // y 0x79 121
             [ 0x44,0x64,0x54,0x4c,0x44 ],   // z 0x7a 122
-            [ 0x00,0x08,0x36,0x41,0x41 ],   // [ 0x7b 123
+            [ 0x00,0x00,0x7f,0x41,0x00 ],   // [ 0x7b 123
             [ 0x00,0x00,0x7f,0x00,0x00 ],   // | 0x7c 124
             [ 0x41,0x41,0x36,0x08,0x00 ],   // ] 0x7d 125
             [ 0x04,0x02,0x04,0x08,0x04 ],   // ~ 0x7e 126
@@ -187,7 +187,8 @@ require(['bootstrap'], function() {
             },
 
             at: function(n) {
-                return (this.col + n + this.options.cols) % this.options.cols;
+                var cols = this.letters.length * (alphabet.width + 1) + this.options.cols;
+                return (this.col + n + cols) % cols;
             },
 
             initialize: function() {
@@ -223,21 +224,22 @@ require(['bootstrap'], function() {
             },
 
             print: function(text) {
-                var letters = alphabet.get(text);
+                this.letters = alphabet.get(text);
                 this.off();
 
-                // Each letter
-                for( var l = 0; l < letters.length; l++) {
+                for (var col = 0; col < this.options.cols; col++) {
 
-                    // Each letter's row
-                    for( var row = 0; row < alphabet.height; row++) {
-
-                        // Each letter's column
-                        for( var col = 0; col < alphabet.width; col++) {
-                            this.leds[row][this.at(col + l * (alphabet.width+1))].light(letters[l][col] & (1 << row));
-                        }                        
-                    }                                        
-                }                
+                    var letter = this.letters[Math.floor(this.at(col) / (alphabet.width+1))];
+                    var column = this.at(col) % (alphabet.width+1);
+                                        
+                    if (letter) {                    
+                        for( var row = 0; row < alphabet.height; row++) {
+                            this.leds[row][col].light(letter[column] & (1 << row));
+                        }
+                    }
+                                        
+                    if (column == alphabet.width - 1) col++;
+                }
             }
         });
 
@@ -265,7 +267,7 @@ require(['bootstrap'], function() {
                 var self = this;
                 this.interval = setInterval(function() {
                     self.letters();
-                    self.matrix.shift(-1);
+                    self.matrix.shift(1);
                 }, 200);
             },
 
