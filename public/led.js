@@ -170,7 +170,7 @@ require(['bootstrap'], function() {
             leds: [],
 
             incCol: function(n) {
-                this.col = (this.col + n) % this.options.cols;
+                this.col = (this.col + n + this.options.cols) % this.options.cols;
             },
 
             initialize: function() {
@@ -242,7 +242,7 @@ require(['bootstrap'], function() {
                 var self = this;
                 this.interval = setInterval(function() {
                     self.letters();
-                    self.matrix.incCol(1);
+                    self.matrix.incCol(-1);
                 }, 200);
             },
 
