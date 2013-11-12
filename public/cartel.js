@@ -177,6 +177,8 @@ define([
 
     return Backbone.View.extend({
 
+        text: '',
+        
         col: 0,
 
         leds: [],
@@ -203,7 +205,7 @@ define([
         },
 
         render: function() {
-            this.$el.empty();
+            this.$el.empty().addClass('cartel');
             for( var i = 0; i < this.leds.length; i++) {
                 var row = $('<div>').addClass('led-row');
                 for( var j = 0; j < this.leds[i].length; j++) {

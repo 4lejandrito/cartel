@@ -21,7 +21,9 @@
         <link href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.min.css" rel="stylesheet">
         <link href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome-ie7.min.css" rel="stylesheet">
 
-        <link rel="stylesheet" href="css/cartel.css">
+        <link rel="stylesheet" href="/cartel.css">
+        <link rel="stylesheet" href="css/app.css">
+
     </head>
     <body>
 
@@ -35,11 +37,11 @@
             </div>
         </div>
 
-        <div class="cartel container">
+        <div class="body container">
 
             <input type="text" id="letters" value="OPEN"/>
 
-            <div class="matrix well">
+            <div id="cartel" class="well">
                 Loading panel...
             </div>
 
@@ -52,11 +54,7 @@
 
         </div>
 
-        <script type="text/template" class="tpl-led">
-           <div>&nbsp;</div>
-        </script>
-
-        <script data-main="led.js" src="http://requirejs.org/docs/release/2.1.5/minified/require.js"></script>
+        <script data-main="app.js" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.5/require.min.js"></script>
 
     </body>
 </html>
