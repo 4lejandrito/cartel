@@ -283,3 +283,11 @@ textarea {
         page-break-after: avoid;
     }
 }
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.cartel {
+    text-align: center;
+}
