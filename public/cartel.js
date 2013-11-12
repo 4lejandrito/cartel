@@ -9,6 +9,12 @@ require.config({
         bootstrap  : 'http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min'
     },
 
+    map: {
+        '*': {
+            'css': 'https://raw.github.com/guybedford/require-css/master/css.js'
+        } 
+    },
+
     shim: {
         backbone: {
             deps: ['underscore', 'jquery'],
@@ -22,7 +28,8 @@ require.config({
 define([
     'jquery',
     'underscore',
-    'backbone'
+    'backbone',
+    'css!cartel'
 ], function($, _, Backbone) {        
 
     /**********************************************************
@@ -178,7 +185,7 @@ define([
     return Backbone.View.extend({
 
         text: '',
-        
+
         col: 0,
 
         leds: [],
