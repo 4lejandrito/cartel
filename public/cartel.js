@@ -250,6 +250,8 @@ define([
                                     
                 if (column == alphabet.width - 1) col++;
             }
+
+            return this;
         },
 
         start: function() {                
@@ -259,11 +261,13 @@ define([
                 self.print(self.text);
                 self.shift(1);
             }, 200);
+            return this;
         },
 
         stop: function(letters) {
             clearInterval(this.interval);
             delete this.interval;
+            return this;
         }
     });
 });
