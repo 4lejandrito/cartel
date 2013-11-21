@@ -29,7 +29,7 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'css!cartel'
+    'css!http://kartel.herokuapp.com/cartel'
 ], function($, _, Backbone) {        
 
     /**********************************************************
@@ -254,13 +254,13 @@ define([
             return this;
         },
 
-        start: function() {                
+        start: function(speed) {                
             if (this.interval) return;
             var self = this;
             this.interval = setInterval(function() {
                 self.print(self.text);
                 self.shift(1);
-            }, 200);
+            }, speed || 50);
             return this;
         },
 
