@@ -11,7 +11,7 @@ require.config({
 
     map: {
         '*': {
-            'css': 'https://raw.github.com/guybedford/require-css/master/css.js'
+            'css': '//cdnjs.cloudflare.com/ajax/libs/require-css/0.1.5/css.js'
         } 
     },
 
